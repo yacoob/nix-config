@@ -5,7 +5,9 @@
 
   home.username = "yacoob";
   home.homeDirectory = "/home/yacoob";
-  home.packages = [];
+  home.packages = [
+    pkgs.gdu
+  ];
   home.file = {};
   home.sessionVariables = {};
 
