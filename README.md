@@ -2,26 +2,14 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
 ## Next
 
-- nvim and/or lazyvim
 - plasma manager
-- figure out out-of-tree stuff for corp hosts
+- server/desktop flavours (lazyvim, font, plasma...)
+- figure out out-of-tree stuff for corp hosts and equivalent of chezmoi's [guarded mode](https://github.com/yacoob/dotfiles/blob/7e16e72c7b3fd3f9d16692a642828a406b91da60/home/.chezmoi.toml.tmpl#L17)
 
 ## outstanding dotfiles
 
 ```
-dot_config/nvim/dot_neoconf.json
-dot_config/nvim/init.lua
-dot_config/nvim/lua/
-dot_config/nvim/lua/config/
-dot_config/nvim/lua/config/autocmds.lua
-dot_config/nvim/lua/config/keymaps.lua
-dot_config/nvim/lua/config/lazy.lua
-dot_config/nvim/lua/config/options.lua
-dot_config/nvim/lua/plugins/
-dot_config/nvim/lua/plugins/nvim-lint.lua
-dot_config/nvim/lua/plugins/tokyonight.lua
-dot_config/nvim/stylua.toml
-
+# KDE stuff
 dot_config/kcminputrc.src.ini
 dot_config/kdeglobals.src.ini
 dot_config/kglobalshortcutsrc.src.ini
@@ -33,20 +21,25 @@ dot_config/plasmaparc.src.ini
 dot_config/plasmashellrc.src.ini
 dot_config/private_kxkbrc
 
+# systemd unit+timer for user systemd instance
+dot_config/systemd/user/gh-pr-count.service
+dot_config/systemd/user/gh-pr-count.timer
+
+# git configuration
+dot_config/git/attributes.tmpl
+dot_gitconfig
+dot_gitconfig.oauth
+dot_ssh/allowedSigners
+
+# authorized_keys for ssh
+dot_ssh/authorized_keys.tmpl
+
+# a script
 dot_local/bin/executable_u4025qw-kvm-flip.sh
 dot_face.icon
 workarea/
 
-dot_config/git/attributes.tmpl
-dot_gitconfig
-dot_gitconfig.oauth
-
-dot_ssh/allowedSigners
-dot_ssh/authorized_keys.tmpl
-
-dot_config/systemd/user/gh-pr-count.service
-dot_config/systemd/user/gh-pr-count.timer
-
+# assorted configs
 dot_aptitude/config
 dot_config/environment.d/qt_font_scaling.conf
 dot_config/ghostty/config

@@ -62,8 +62,6 @@
       if command -q nvim
           set -gx EDITOR nvim
           set -gx VISUAL nvim
-          alias vi nvim
-          alias vim nvim
       else if command -q vim
           set -gx EDITOR vim
           set -gx VISUAL vim
