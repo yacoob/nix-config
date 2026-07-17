@@ -2,7 +2,6 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
 ## Next
 
-- split home.nix per concern
 - nvim and/or lazyvim
 - plasma manager
 - figure out out-of-tree stuff for corp hosts

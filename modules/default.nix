@@ -1,5 +1,9 @@
 {
   imports = [
+    ./env.nix
+    ./packages.nix
+    ./fish.nix
+    ./fishy-friends.nix
     ./starship.nix
   ];
 }

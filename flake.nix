@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration for yacoob";
+  description = "my dotfiles in home-manager flavour";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
