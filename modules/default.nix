@@ -8,5 +8,7 @@
     ./starship.nix
 
     ./neovim.nix
+
+    ./plasma.nix
   ];
 }

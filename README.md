@@ -2,25 +2,12 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
 ## Next
 
-- plasma manager
 - server/desktop flavours (lazyvim, font, plasma...)
 - figure out out-of-tree stuff for corp hosts and equivalent of chezmoi's [guarded mode](https://github.com/yacoob/dotfiles/blob/7e16e72c7b3fd3f9d16692a642828a406b91da60/home/.chezmoi.toml.tmpl#L17)
 
 ## outstanding dotfiles
 
 ```
-# KDE stuff
-dot_config/kcminputrc.src.ini
-dot_config/kdeglobals.src.ini
-dot_config/kglobalshortcutsrc.src.ini
-dot_config/krunnerrc
-dot_config/kscreenlockerrc.src.ini
-dot_config/kwinrc.src.ini
-dot_config/plasma-localerc
-dot_config/plasmaparc.src.ini
-dot_config/plasmashellrc.src.ini
-dot_config/private_kxkbrc
-
 # systemd unit+timer for user systemd instance
 dot_config/systemd/user/gh-pr-count.service
 dot_config/systemd/user/gh-pr-count.timer
