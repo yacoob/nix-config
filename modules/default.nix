@@ -1,4 +1,4 @@
-{
+{ flavour, lib, ... }: {
   imports = [
     ./env.nix
     ./packages.nix
@@ -8,7 +8,6 @@
     ./starship.nix
 
     ./neovim.nix
-
-    ./plasma.nix
-  ];
+  ]
+  ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ];
 }

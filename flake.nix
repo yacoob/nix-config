@@ -17,14 +17,25 @@
 
   outputs =
     { nixpkgs, home-manager, lazyvim, plasma-manager, ... }:
-    {
-      homeConfigurations."yacoob" = home-manager.lib.homeManagerConfiguration {
+    let
+      inherit (nixpkgs) lib;
+      vars = import ./vars.nix;
+
+      mkFlavour = flavour: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit flavour; };
         modules = [
           ./home.nix
           lazyvim.homeManagerModules.default
           plasma-manager.homeModules.plasma-manager
         ];
+      };
+
+      flavours = lib.genAttrs [ "base" "desktop" ] mkFlavour;
+    in
+    {
+      homeConfigurations = flavours // {
+        ${vars.userName} = flavours.${vars.defaultFlavour};
       };
     };
 }

@@ -6,7 +6,10 @@
 #   active           — working tree vs the in-use generation:  "what if I switch to this?"
 set shell := ["bash", "-c"]
 
-inst := "homeConfigurations.yacoob.activationPackage"
+# config the recipes target; defaults to your flake default (vars.defaultFlavour).
+# override a specific flavour with `just flavour=base <recipe>`
+flavour := env_var('USER')
+inst := "homeConfigurations." + flavour + ".activationPackage"
 
 # list recipes
 default:
@@ -34,7 +37,7 @@ fs base="parent":
 
 # TUI browse of the merged config (git source dodges the fsmonitor socket)
 inspect:
-    nix run nixpkgs#nix-inspect -- -e "(builtins.getFlake \"git+file://$PWD\").homeConfigurations.yacoob.config"
+    nix run nixpkgs#nix-inspect -- -e "(builtins.getFlake \"git+file://$PWD\").homeConfigurations.{{flavour}}.config"
 
 # repl with the flake loaded (try: options.programs.fish.plugins.files)
 repl:
@@ -42,4 +45,4 @@ repl:
 
 # VM ONLY: activate the config and drop into a fresh fish. Never on the workstation.
 switch:
-    home-manager switch --flake .#yacoob && exec fish
+    home-manager switch --flake .#{{flavour}} && exec fish

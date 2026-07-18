@@ -1,3 +1,4 @@
 {
   userName = "yacoob";
+  defaultFlavour = "desktop";
 }
