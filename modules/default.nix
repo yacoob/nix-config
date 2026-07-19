@@ -13,6 +13,7 @@
     ./jujutsu.nix
     ./ssh.nix
     ./systemd.nix
+    ./assorted_tools.nix
   ]
   ++ lib.optionals (flavour == "desktop") [
     ./plasma.nix
