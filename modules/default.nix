@@ -8,6 +8,8 @@
     ./starship.nix
 
     ./neovim.nix
+
+    ./git.nix
   ]
   ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ./gh-pr-count.nix ];
 }

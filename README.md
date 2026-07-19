@@ -7,12 +7,6 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 ## outstanding dotfiles
 
 ```
-# git configuration
-dot_config/git/attributes.tmpl
-dot_gitconfig
-dot_gitconfig.oauth
-dot_ssh/allowedSigners
-
 # authorized_keys for ssh
 dot_ssh/authorized_keys.tmpl
 

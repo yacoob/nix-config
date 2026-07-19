@@ -1,4 +1,7 @@
 {
   userName = "yacoob";
+  fullName = "Jakub Turski";
+  email = "yacoob@ftml.net";
   defaultFlavour = "desktop";
+  sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFn7Jo4qNc92Gh/ZmiD87QTqruvA/3XaaLKWkaFPpZR+";
 }

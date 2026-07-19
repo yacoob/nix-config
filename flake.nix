@@ -23,7 +23,7 @@
 
       mkFlavour = flavour: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = { inherit flavour; };
+        extraSpecialArgs = { inherit flavour vars; };
         modules = [
           ./home.nix
           lazyvim.homeManagerModules.default
