@@ -11,7 +11,6 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
 ```
 # assorted configs
-dot_config/environment.d/qt_font_scaling.conf
 dot_config/ghostty/config
 
 dot_config/lazygit/config.yml
