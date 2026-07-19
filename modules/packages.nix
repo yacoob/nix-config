@@ -3,7 +3,6 @@
 
   home.packages = with pkgs; [
     gdu
-    jujutsu
     just
     nerd-fonts.fira-code
     nh

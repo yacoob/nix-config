@@ -10,6 +10,7 @@
     ./neovim.nix
 
     ./git.nix
+    ./jujutsu.nix
     ./ssh.nix
     ./systemd.nix
   ]

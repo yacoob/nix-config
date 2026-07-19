@@ -13,10 +13,7 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 # assorted configs
 dot_config/ghostty/config
 
-dot_config/jj/config.toml
-
 dot_config/tealdeer/config.toml
-
 dot_aptitude/config
 dot_ipython/profile_default/ipython_config.py
 dot_markdownlint-cli2.yaml
