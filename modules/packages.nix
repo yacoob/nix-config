@@ -5,7 +5,6 @@
     gdu
     jujutsu
     just
-    lazygit
     nerd-fonts.fira-code
     nh
     nix-inspect

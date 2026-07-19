@@ -13,8 +13,6 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 # assorted configs
 dot_config/ghostty/config
 
-dot_config/lazygit/config.yml
-
 dot_config/jj/config.toml
 
 dot_config/tealdeer/config.toml
