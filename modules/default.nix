@@ -10,6 +10,7 @@
     ./neovim.nix
 
     ./git.nix
+    ./ssh.nix
   ]
   ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ./gh-pr-count.nix ];
 }

@@ -1,18 +1,13 @@
 A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
-## Next
-
-- figure out out-of-tree stuff for corp hosts and equivalent of chezmoi's [guarded mode](https://github.com/yacoob/dotfiles/blob/7e16e72c7b3fd3f9d16692a642828a406b91da60/home/.chezmoi.toml.tmpl#L17)
-
 ## outstanding dotfiles
 
 ```
-# authorized_keys for ssh
-dot_ssh/authorized_keys.tmpl
-
 # a script
 dot_local/bin/executable_u4025qw-kvm-flip.sh
 dot_face.icon
+
+# a dir
 workarea/
 
 # assorted configs
