@@ -7,10 +7,6 @@ A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 ## outstanding dotfiles
 
 ```
-# systemd unit+timer for user systemd instance
-dot_config/systemd/user/gh-pr-count.service
-dot_config/systemd/user/gh-pr-count.timer
-
 # git configuration
 dot_config/git/attributes.tmpl
 dot_gitconfig

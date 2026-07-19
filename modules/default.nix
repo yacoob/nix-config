@@ -9,5 +9,5 @@
 
     ./neovim.nix
   ]
-  ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ];
+  ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ./gh-pr-count.nix ];
 }
