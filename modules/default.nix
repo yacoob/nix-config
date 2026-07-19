@@ -11,6 +11,10 @@
 
     ./git.nix
     ./ssh.nix
+    ./systemd.nix
   ]
-  ++ lib.optionals (flavour == "desktop") [ ./plasma.nix ./gh-pr-count.nix ];
+  ++ lib.optionals (flavour == "desktop") [
+    ./plasma.nix
+    ./scripts.nix
+  ];
 }

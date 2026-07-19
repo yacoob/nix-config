@@ -1,23 +1,26 @@
 A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
+## next
+- resplit functionality: minimal, base, desktop
+- sanity check
+- use this config on `onyx`, figure out the wrinkles for `desktop` flavour
+- use this config on `snufkin` as well
+- use this config on `illaoi`, figure out the wrinkles for `base` flavour
+
 ## outstanding dotfiles
 
 ```
-# a script
-dot_local/bin/executable_u4025qw-kvm-flip.sh
-dot_face.icon
-
-# a dir
-workarea/
-
 # assorted configs
-dot_aptitude/config
 dot_config/environment.d/qt_font_scaling.conf
 dot_config/ghostty/config
-dot_config/jj/config.toml
+
 dot_config/lazygit/config.yml
-dot_config/stylua/stylua.toml
+
+dot_config/jj/config.toml
+
 dot_config/tealdeer/config.toml
+
+dot_aptitude/config
 dot_ipython/profile_default/ipython_config.py
 dot_markdownlint-cli2.yaml
 ```

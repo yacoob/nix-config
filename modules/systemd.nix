@@ -8,6 +8,8 @@ let
   '';
 in
 {
+  systemd.user.tmpfiles.rules = [ "d %h/workarea 0750 - - -" ];
+
   systemd.user.services.gh-pr-count = {
     Unit = {
       Description = "Check outstanding GitHub PR count";
