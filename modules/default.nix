@@ -17,5 +17,6 @@
   ++ lib.optionals (flavour == "desktop") [
     ./plasma.nix
     ./scripts.nix
+    ./terminal.nix
   ];
 }
