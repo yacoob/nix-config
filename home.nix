@@ -1,6 +1,4 @@
-{ ... }: let
-  vars = import ./vars.nix;
-in {
+{ vars, ... }: {
   imports = [ ./modules ];
 
   nixpkgs.config.allowUnfree = true;

@@ -1,7 +1,7 @@
 A home-manager version of my [dotfiles](https://github.com/yacoob/dotfiles).
 
 ## next
-- sanity check
-- use this config on `onyx`, figure out the wrinkles for `desktop` flavour
-- use this config on `snufkin` as well
+- play with existing machinery on `snufkin`; analyse the profile content, nix-tree, nix-inspect etc
+- try out devenvs
+- use this config on `onyx` as well
 - use this config on `illaoi`, figure out the wrinkles for `base` flavour

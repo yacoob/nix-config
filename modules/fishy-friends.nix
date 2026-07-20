@@ -37,6 +37,7 @@
 
     fzf = {
       enable = true;
+      enableFishIntegration = false; # fzf.fish owns the keybinds
       defaultCommand = "fd --type file --color=always";
       historyWidget.command = "";
       defaultOptions = [
