@@ -21,8 +21,15 @@
       inherit (nixpkgs) lib;
       vars = import ./vars.nix;
 
+      flavoursInOrder = [ "minimal" "base" "desktop" ];
+
+      flavourAtLeast = flavour: target:
+        lib.lists.findFirstIndex (x: x == flavour) null flavoursInOrder
+        >= lib.lists.findFirstIndex (x: x == target) null flavoursInOrder;
+
       mkFlavour = flavour: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        lib = lib.extend (_: _: { flavourAtLeast = flavourAtLeast flavour; });
         extraSpecialArgs = { inherit flavour vars; };
         modules = [
           ./home.nix
@@ -31,7 +38,7 @@
         ];
       };
 
-      flavours = lib.genAttrs [ "base" "desktop" ] mkFlavour;
+      flavours = lib.genAttrs flavoursInOrder mkFlavour;
     in
     {
       homeConfigurations = flavours // {

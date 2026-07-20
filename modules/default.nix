@@ -1,23 +1,18 @@
-{ flavour, lib, ... }: {
+{ ... }: {
   imports = [
+    ./assorted_tools.nix
     ./env.nix
-    ./packages.nix
-
     ./fish.nix
     ./fishy-friends.nix
-    ./starship.nix
-
-    ./neovim.nix
-
     ./git.nix
     ./jujutsu.nix
-    ./ssh.nix
-    ./systemd.nix
-    ./assorted_tools.nix
-  ]
-  ++ lib.optionals (flavour == "desktop") [
+    ./neovim.nix
+    ./packages.nix
     ./plasma.nix
     ./scripts.nix
+    ./ssh.nix
+    ./starship.nix
+    ./systemd.nix
     ./terminal.nix
   ];
 }

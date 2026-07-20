@@ -1,4 +1,4 @@
-{ flavour, lib, vars, ... }: {
+{ lib, vars, ... }: {
   home.sessionVariables = {
     LANG = "en_IE.UTF-8";
     LC_COLLATE = "pl_PL.UTF-8";
@@ -15,7 +15,7 @@
     PIP_REQUIRE_VIRTUALENV = "true";
   };
 
-  xdg.configFile."environment.d/qt_font_scaling.conf" = lib.mkIf (flavour == "desktop") {
+  xdg.configFile."environment.d/qt_font_scaling.conf" = lib.mkIf (lib.flavourAtLeast "desktop") {
     text = "QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor\n";
   };
 }

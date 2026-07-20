@@ -1,4 +1,8 @@
-{ config, vars, ... }: {
+{ config, lib, vars, ... }: {
+  home.file.".ssh/allowedSigners".text = ''
+    ${vars.email} ${vars.sshKey}
+  '';
+
   programs = {
     git = {
       enable = true;
@@ -76,11 +80,6 @@
       };
     };
 
-    mergiraf = {
-      enable = true;
-      enableGitIntegration = true;
-    };
-
     delta = {
       enable = true;
       enableGitIntegration = true;
@@ -89,6 +88,11 @@
         features = "unobtrusive-line-numbers decorations";
         hyperlinks = true;
       };
+    };
+  } // lib.optionalAttrs (lib.flavourAtLeast "base") {
+    mergiraf = {
+      enable = true;
+      enableGitIntegration = true;
     };
 
     lazygit = {
@@ -117,8 +121,4 @@
       };
     };
   };
-
-  home.file.".ssh/allowedSigners".text = ''
-    ${vars.email} ${vars.sshKey}
-  '';
 }

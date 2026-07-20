@@ -1,4 +1,4 @@
-{ pkgs, vars, ... }: {
+{ lib, pkgs, vars, ... }: lib.mkIf (lib.flavourAtLeast "base") {
   home.packages = [ pkgs.jjui ];
 
   programs.jujutsu = {

@@ -1,5 +1,5 @@
-{ ... }: {
-  programs.lazyvim = {
+{ lib, ... }: {
+  programs.lazyvim = lib.mkIf (lib.flavourAtLeast "desktop") {
     enable = true;
     installCoreDependencies = false;
 
@@ -82,6 +82,7 @@
   };
 
   programs.neovim = {
+    enable = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: lib.mkIf (lib.flavourAtLeast "base") {
   programs = {
     atuin = {
       enable = true;
