@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: lib.mkIf (lib.flavourAtLeast "base") {
+{ lib, pkgs, ... }:
+lib.mkIf (lib.flavourAtLeast "base") {
   programs.tealdeer = {
     enable = true;
     enableAutoUpdates = false; # no systemd timer

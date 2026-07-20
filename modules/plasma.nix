@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: lib.mkIf (lib.flavourAtLeast "desktop") {
+{ lib, pkgs, ... }:
+lib.mkIf (lib.flavourAtLeast "desktop") {
   # KZones KWin script (its settings and shortcuts live in programs.plasma below).
   home.packages = [ pkgs.kdePackages.kzones ];
 
@@ -104,13 +105,19 @@
     shortcuts = {
       "com.mitchellh.ghostty"."ALT+space" = "Alt+Space";
       ksmserver = {
-        "Lock Session" = ["Screensaver" "Meta+L"];
+        "Lock Session" = [
+          "Screensaver"
+          "Meta+L"
+        ];
         "Log Out" = "Ctrl+Alt+Del";
       };
       kwin = {
         "Edit Tiles" = [ ];
         Expose = "Ctrl+F9";
-        ExposeAll = ["Launch (C)" "Ctrl+F10"];
+        ExposeAll = [
+          "Launch (C)"
+          "Ctrl+F10"
+        ];
         ExposeClass = "Ctrl+F7";
         "KZones: Activate layout 1" = "Meta+Num+1";
         "KZones: Activate layout 2" = "Meta+Num+2";
@@ -143,7 +150,10 @@
         "KZones: Switch to next window in current zone" = "Ctrl+Alt+Up";
         "KZones: Switch to previous window in current zone" = "Ctrl+Alt+Down";
         "KZones: Toggle zone overlay" = "Ctrl+Alt+C";
-        Overview = ["Meta+W" "Meta+Tab"];
+        Overview = [
+          "Meta+W"
+          "Meta+Tab"
+        ];
         "Switch to Desktop 1" = "Ctrl+F1";
         "Switch to Desktop 2" = "Ctrl+F2";
         "Switch to Desktop 3" = "Ctrl+F3";
@@ -164,7 +174,10 @@
         "Window Quick Tile Top Right" = [ ];
       };
       org_kde_powerdevil = {
-        Sleep = ["Sleep" "Meta+Shift+L"];
+        Sleep = [
+          "Sleep"
+          "Meta+Shift+L"
+        ];
         "Turn Off Screen" = "Meta+Ctrl+L";
       };
       plasmashell = {
@@ -175,8 +188,15 @@
 
       "services/com.mitchellh.ghostty.desktop"._launch = [ ];
       "services/org.kde.konsole.desktop"._launch = [ ];
-      "services/org.kde.krunner.desktop"._launch = ["Meta" "Search" "Alt+F2"];
-      "services/org.kde.touchpadshortcuts.desktop".ToggleTouchpad = ["Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku"];
+      "services/org.kde.krunner.desktop"._launch = [
+        "Meta"
+        "Search"
+        "Alt+F2"
+      ];
+      "services/org.kde.touchpadshortcuts.desktop".ToggleTouchpad = [
+        "Touchpad Toggle"
+        "Meta+Ctrl+Zenkaku Hankaku"
+      ];
     };
   };
 }

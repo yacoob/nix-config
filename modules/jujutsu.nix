@@ -1,4 +1,10 @@
-{ lib, pkgs, vars, ... }: lib.mkIf (lib.flavourAtLeast "base") {
+{
+  lib,
+  pkgs,
+  vars,
+  ...
+}:
+lib.mkIf (lib.flavourAtLeast "base") {
   home.packages = [ pkgs.jjui ];
 
   programs.jujutsu = {
@@ -22,8 +28,20 @@
         show-cryptographic-signatures = true;
       };
       aliases = {
-        tug = [ "bookmark" "move" "--from" "closest_bookmark(@)" "--to" "closest_pushable(@)" ];
-        mine = [ "bookmark" "list" "-r" "mine()" ];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "closest_bookmark(@)"
+          "--to"
+          "closest_pushable(@)"
+        ];
+        mine = [
+          "bookmark"
+          "list"
+          "-r"
+          "mine()"
+        ];
       };
       revset-aliases = {
         my_work = "present(@) | ancestors(mine() ~ ::trunk(), 3) | present(trunk())";

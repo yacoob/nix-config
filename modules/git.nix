@@ -1,4 +1,10 @@
-{ config, lib, vars, ... }: {
+{
+  config,
+  lib,
+  vars,
+  ...
+}:
+{
   home.file.".ssh/allowedSigners".text = ''
     ${vars.email} ${vars.sshKey}
   '';
@@ -89,7 +95,8 @@
         hyperlinks = true;
       };
     };
-  } // lib.optionalAttrs (lib.flavourAtLeast "base") {
+  }
+  // lib.optionalAttrs (lib.flavourAtLeast "base") {
     mergiraf = {
       enable = true;
       enableGitIntegration = true;
@@ -105,9 +112,15 @@
         gui = {
           nerdFontsVersion = "3";
           theme = {
-            activeBorderColor = [ "#ff9e64" "bold" ];
+            activeBorderColor = [
+              "#ff9e64"
+              "bold"
+            ];
             inactiveBorderColor = [ "#27a1b9" ];
-            searchingActiveBorderColor = [ "#ff9e64" "bold" ];
+            searchingActiveBorderColor = [
+              "#ff9e64"
+              "bold"
+            ];
             optionsTextColor = [ "#7aa2f7" ];
             selectedLineBgColor = [ "#283457" ];
             cherryPickedCommitFgColor = [ "#7aa2f7" ];
