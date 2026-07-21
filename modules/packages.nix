@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
-  flavourAtLeast,
+  config,
   ...
 }:
-lib.mkIf (flavourAtLeast "base") {
+lib.mkIf (config.flavour.atLeast "base") {
   home.packages = with pkgs; [
     nh
     nix-inspect

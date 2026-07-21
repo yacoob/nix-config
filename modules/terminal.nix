@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
-  flavourAtLeast,
+  config,
   ...
 }:
-lib.mkIf (flavourAtLeast "desktop") {
+lib.mkIf (config.flavour.atLeast "desktop") {
   # FiraCode Nerd Font — bundled with the terminal that uses it
   fonts.fontconfig.enable = true;
   home.packages = [ pkgs.nerd-fonts.fira-code ];

@@ -4,6 +4,7 @@
     ./env.nix
     ./fish.nix
     ./fishy-friends.nix
+    ./flavour.nix
     ./git.nix
     ./jujutsu.nix
     ./neovim.nix

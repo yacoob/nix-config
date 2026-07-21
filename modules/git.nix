@@ -2,7 +2,6 @@
   config,
   lib,
   vars,
-  flavourAtLeast,
   ...
 }:
 {
@@ -97,7 +96,7 @@
       };
     };
   }
-  // lib.optionalAttrs (flavourAtLeast "base") {
+  // lib.optionalAttrs (config.flavour.atLeast "base") {
     mergiraf = {
       enable = true;
       enableGitIntegration = true;

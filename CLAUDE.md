@@ -32,3 +32,9 @@ gradually replacing the older chezmoi dotfiles. See README "Next" for roadmap.
 `flake.nix` holds inputs and pulls in external flake modules (lazyvim,
 plasma-manager). `home.nix` imports `modules/`, one file per concern; personal
 settings live in `modules/`.
+
+Three flavours (ascending: minimal → base → desktop; the list lives in
+`flake.nix`). flake.nix builds one `homeConfigurations.<flavour>` each and sets
+`flavour.name`; modules gate themselves with `config.flavour.atLeast "base"` (the
+option + helper live in `modules/flavour.nix`). `homeConfigurations.<userName>`
+aliases the default.

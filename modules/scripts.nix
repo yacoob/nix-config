@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
-  flavourAtLeast,
+  config,
   ...
 }:
-lib.mkIf (flavourAtLeast "desktop") {
+lib.mkIf (config.flavour.atLeast "desktop") {
   # assorted local scripts, dropped into ~/.local/bin
 
   # DELL U4025QW input switcher (notify-send comes from the desktop)

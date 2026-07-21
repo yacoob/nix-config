@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
-  flavourAtLeast,
+  config,
   ...
 }:
-lib.mkIf (flavourAtLeast "desktop") {
+lib.mkIf (config.flavour.atLeast "desktop") {
   # KZones KWin script (its settings and shortcuts live in programs.plasma below).
   home.packages = [ pkgs.kdePackages.kzones ];
 

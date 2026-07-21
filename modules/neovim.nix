@@ -1,5 +1,5 @@
-{ lib, flavourAtLeast, ... }: {
-  programs.lazyvim = lib.mkIf (flavourAtLeast "desktop") {
+{ lib, config, ... }: {
+  programs.lazyvim = lib.mkIf (config.flavour.atLeast "desktop") {
     enable = true;
     installCoreDependencies = false;
 

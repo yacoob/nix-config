@@ -1,14 +1,14 @@
 {
   lib,
   pkgs,
-  flavourAtLeast,
+  config,
   ...
 }:
 {
   systemd.user = {
     tmpfiles.rules = [ "d %h/workarea 0750 - - -" ];
   }
-  // lib.optionalAttrs (flavourAtLeast "desktop") {
+  // lib.optionalAttrs (config.flavour.atLeast "desktop") {
     services.gh-pr-count = {
       Unit = {
         Description = "Check outstanding GitHub PR count";

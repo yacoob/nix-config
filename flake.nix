@@ -24,44 +24,29 @@
       ...
     }:
     let
-      inherit (nixpkgs) lib;
+      vars = import ./vars.nix;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      vars = import ./vars.nix;
-
-      flavoursInOrder = [
-        "minimal"
-        "base"
-        "desktop"
-      ];
-
-      flavourIndex =
-        flavour:
-        lib.lists.findFirstIndex (x: x == flavour) (throw "unknown flavour: ${flavour}") flavoursInOrder;
-
-      flavourAtLeast = flavour: target: flavourIndex flavour >= flavourIndex target;
 
       mkFlavour =
         flavour:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = {
-            inherit vars;
-            flavourAtLeast = flavourAtLeast flavour;
-          };
+          extraSpecialArgs = { inherit vars; };
           modules = [
+            { flavour.name = flavour; }
             ./home.nix
             lazyvim.homeManagerModules.default
             plasma-manager.homeModules.plasma-manager
           ];
         };
 
-      flavours = lib.genAttrs flavoursInOrder mkFlavour;
+      flavours = nixpkgs.lib.genAttrs vars.flavoursInOrder mkFlavour;
     in
     {
+      formatter.${system} = pkgs.nixfmt-tree;
       homeConfigurations = flavours // {
         ${vars.userName} = flavours.${vars.defaultFlavour};
       };
-      formatter.${system} = pkgs.nixfmt-tree;
     };
 }
