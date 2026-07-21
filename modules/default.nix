@@ -6,7 +6,6 @@
     ./flavour.nix
     ./git.nix
     ./jujutsu.nix
-    ./neovim.nix
     ./nix-tools.nix
     ./plasma.nix
     ./scripts.nix
@@ -15,5 +14,6 @@
     ./starship.nix
     ./systemd.nix
     ./terminal.nix
+    ./vim.nix
   ];
 }
