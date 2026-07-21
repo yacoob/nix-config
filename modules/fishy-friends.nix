@@ -5,6 +5,12 @@
   ...
 }:
 lib.mkIf (config.flavour.atLeast "base") {
+  # fzf colors: grab tokyonight's extras sh snippet for fzf, sed it down to a plain
+  # options file and put the resulting file's path in FZF_DEFAULT_OPTS_FILE
+  home.sessionVariables.FZF_DEFAULT_OPTS_FILE = pkgs.runCommandLocal "fzf-tokyonight-night" { } ''
+    sed -n 's/^ *\(--color=[^ ]*\).*/\1/p' ${pkgs.vimPlugins.tokyonight-nvim}/extras/fzf/tokyonight_night.sh > $out
+  '';
+
   programs = {
     atuin = {
       enable = true;
@@ -54,24 +60,6 @@ lib.mkIf (config.flavour.atLeast "base") {
         "--layout=reverse"
         "--border=none"
       ];
-      colors = {
-        "bg+" = "#1E222A";
-        "bg" = "#1A1D23";
-        "border" = "#3A3E47";
-        "fg" = "#ADB0BB";
-        "gutter" = "#1A1D23";
-        "header" = "#50A4E9";
-        "hl+" = "#5EB7FF";
-        "hl" = "#5EB7FF";
-        "info" = "#3A3E47";
-        "marker" = "#5EB7FF";
-        "pointer" = "#5EB7FF";
-        "prompt" = "#5EB7FF";
-        "query" = "#ADB0BB:regular";
-        "scrollbar" = "#3A3E47";
-        "separator" = "#3A3E47";
-        "spinner" = "#5EB7FF";
-      };
     };
 
     ripgrep.enable = true;
