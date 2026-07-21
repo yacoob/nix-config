@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   programs.fish = {
     enable = true;
     plugins = [
@@ -8,55 +14,25 @@
       }
     ];
 
-    shellInit = ''
-      umask 027
-      fish_add_path --path ~/.local/bin
-
-      if not set -q SSH_AUTH_SOCK
-          set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
-      end
-      set -gx SHELL $(type -P fish)
-    '';
+    shellInit = lib.mkMerge [
+      ''
+        umask 027
+        fish_add_path --path ~/.local/bin
+        set -gx SHELL $(type -P fish)
+      ''
+      (lib.mkIf (config.flavour.atLeast "desktop") ''
+        if not set -q SSH_AUTH_SOCK
+            set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
+        end
+      '')
+    ];
 
     interactiveShellInit = ''
       set -g fish_greeting
       set -g fish_key_bindings fish_vi_key_bindings
 
-      # fzf.fish key bindings
-      fzf_configure_bindings --processes=ctrl-alt-i
-
       # color theme: TokyoNight
-      # https://github.com/folke/tokyonight.nvim/blob/main/extras/fish/tokyonight_night.fish
-      set -l foreground c0caf5
-      set -l selection 283457
-      set -l comment 565f89
-      set -l red f7768e
-      set -l orange ff9e64
-      set -l yellow e0af68
-      set -l green 9ece6a
-      set -l purple 9d7cd8
-      set -l cyan 7dcfff
-      set -l pink bb9af7
-      set -g fish_color_normal $foreground
-      set -g fish_color_command $cyan
-      set -g fish_color_keyword $pink
-      set -g fish_color_quote $yellow
-      set -g fish_color_redirection $foreground
-      set -g fish_color_end $orange
-      set -g fish_color_option $pink
-      set -g fish_color_error $red
-      set -g fish_color_param $purple
-      set -g fish_color_comment $comment
-      set -g fish_color_selection --background=$selection
-      set -g fish_color_search_match --background=$selection
-      set -g fish_color_operator $green
-      set -g fish_color_escape $pink
-      set -g fish_color_autosuggestion $comment
-      set -g fish_pager_color_progress $comment
-      set -g fish_pager_color_prefix $cyan
-      set -g fish_pager_color_completion $foreground
-      set -g fish_pager_color_description $comment
-      set -g fish_pager_color_selected_background --background=$selection
+      source ${pkgs.vimPlugins.tokyonight-nvim}/extras/fish/tokyonight_night.fish
 
       # editor
       if command -q nvim
@@ -81,10 +57,10 @@
       ll = "ls -lh";
       lla = "ls -lhA";
       k = "kubectl";
-      refish = "exec fish";
-      update-all = "sudo dnf update --refresh --assumeyes && flatpak update -y";
       kctx = "kubert ctx";
       kns = "kubert ns";
+      refish = "exec fish";
+      update-all = "sudo dnf update --refresh --assumeyes && flatpak update -y";
       B = {
         position = "anywhere";
         expansion = "| bat -l yaml";
