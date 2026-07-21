@@ -2,9 +2,10 @@
   lib,
   pkgs,
   vars,
+  flavourAtLeast,
   ...
 }:
-lib.mkIf (lib.flavourAtLeast "base") {
+lib.mkIf (flavourAtLeast "base") {
   home.packages = [ pkgs.jjui ];
 
   programs.jujutsu = {

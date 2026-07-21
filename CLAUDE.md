@@ -20,6 +20,12 @@ gradually replacing the older chezmoi dotfiles. See README "Next" for roadmap.
 
 - `path:` flakerefs fail here — `.git/fsmonitor--daemon.ipc` is a git fsmonitor
   socket that Nix can't copy. Use `.` / `git+file:` (git source excludes `.git`).
+- `nixpkgs.config.allowUnfree = true` in `home.nix` **does** take effect, even
+  though `flake.nix` passes an external `pkgs` (`nixpkgs.legacyPackages`). HM
+  re-instantiates nixpkgs with `nixpkgs.config` applied — the config's own
+  `pkgs` has `allowUnfree = true` while raw `legacyPackages` has it `false`.
+  Verify with:
+  `nix eval --impure --expr '(builtins.getFlake "git+file://$PWD").homeConfigurations.base.pkgs.config.allowUnfree'`
 
 ## Layout
 

@@ -1,5 +1,10 @@
-{ lib, pkgs, ... }:
-lib.mkIf (lib.flavourAtLeast "base") {
+{
+  lib,
+  pkgs,
+  flavourAtLeast,
+  ...
+}:
+lib.mkIf (flavourAtLeast "base") {
   programs = {
     atuin = {
       enable = true;
@@ -43,8 +48,6 @@ lib.mkIf (lib.flavourAtLeast "base") {
       historyWidget.command = "";
       defaultOptions = [
         "--height ~40%"
-        "--reverse"
-        "--inline-info"
         "--ansi"
         "--highlight-line"
         "--info=inline-right"

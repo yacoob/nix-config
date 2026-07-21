@@ -1,5 +1,10 @@
-{ lib, pkgs, ... }:
-lib.mkIf (lib.flavourAtLeast "desktop") {
+{
+  lib,
+  pkgs,
+  flavourAtLeast,
+  ...
+}:
+lib.mkIf (flavourAtLeast "desktop") {
   # KZones KWin script (its settings and shortcuts live in programs.plasma below).
   home.packages = [ pkgs.kdePackages.kzones ];
 
@@ -69,7 +74,78 @@ lib.mkIf (lib.flavourAtLeast "desktop") {
         Script-kzones = {
           enableEdgeSnapping = true;
           fadeWindowsWhileMoving = true;
-          layoutsJson = "[\n    {\n        \"name\": \"Priority Grid\",\n        \"padding\": 0,\n        \"zones\": [\n            {\n                \"x\": 0,\n                \"y\": 0,\n                \"height\": 100,\n                \"width\": 25\n            },\n            {\n                \"x\": 25,\n                \"y\": 0,\n                \"height\": 100,\n                \"width\": 50\n            },\n            {\n                \"x\": 75,\n                \"y\": 0,\n                \"height\": 100,\n                \"width\": 25\n            }\n        ]\n    },\n  {\n        \"name\": \"Half-and-half\",\n        \"zones\": [\n            {\n                \"x\": 0,\n                \"y\": 0,\n                \"height\": 100,\n                \"width\": 50\n            },\n            {\n                \"x\": 50,\n                \"y\": 0,\n                \"height\": 100,\n                \"width\": 50\n            }\n        ]\n    },\n    {\n        \"name\": \"Quadrant Grid\",\n        \"zones\": [\n            {\n                \"x\": 0,\n                \"y\": 0,\n                \"height\": 50,\n                \"width\": 50\n            },\n            {\n                \"x\": 0,\n                \"y\": 50,\n                \"height\": 50,\n                \"width\": 50\n            },\n            {\n                \"x\": 50,\n                \"y\": 50,\n                \"height\": 50,\n                \"width\": 50\n            },\n            {\n                \"x\": 50,\n                \"y\": 0,\n                \"height\": 50,\n                \"width\": 50\n            }\n        ]\n    }\n]";
+          layoutsJson = builtins.toJSON [
+            {
+              name = "Priority Grid";
+              padding = 0;
+              zones = [
+                {
+                  x = 0;
+                  y = 0;
+                  height = 100;
+                  width = 25;
+                }
+                {
+                  x = 25;
+                  y = 0;
+                  height = 100;
+                  width = 50;
+                }
+                {
+                  x = 75;
+                  y = 0;
+                  height = 100;
+                  width = 25;
+                }
+              ];
+            }
+            {
+              name = "Half-and-half";
+              zones = [
+                {
+                  x = 0;
+                  y = 0;
+                  height = 100;
+                  width = 50;
+                }
+                {
+                  x = 50;
+                  y = 0;
+                  height = 100;
+                  width = 50;
+                }
+              ];
+            }
+            {
+              name = "Quadrant Grid";
+              zones = [
+                {
+                  x = 0;
+                  y = 0;
+                  height = 50;
+                  width = 50;
+                }
+                {
+                  x = 0;
+                  y = 50;
+                  height = 50;
+                  width = 50;
+                }
+                {
+                  x = 50;
+                  y = 50;
+                  height = 50;
+                  width = 50;
+                }
+                {
+                  x = 50;
+                  y = 0;
+                  height = 50;
+                  width = 50;
+                }
+              ];
+            }
+          ];
         };
         TabBox.LayoutName = "big_icons";
         Windows = {

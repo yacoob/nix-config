@@ -45,8 +45,10 @@
         flavour:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          lib = lib.extend (_: _: { flavourAtLeast = flavourAtLeast flavour; });
-          extraSpecialArgs = { inherit vars; };
+          extraSpecialArgs = {
+            inherit vars;
+            flavourAtLeast = flavourAtLeast flavour;
+          };
           modules = [
             ./home.nix
             lazyvim.homeManagerModules.default
