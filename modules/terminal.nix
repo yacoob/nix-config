@@ -5,11 +5,10 @@
   ...
 }:
 lib.mkIf (config.flavour.atLeast "desktop") {
-  # FiraCode Nerd Font — bundled with the terminal that uses it
   fonts.fontconfig.enable = true;
   home.packages = [ pkgs.nerd-fonts.fira-code ];
 
-  # config only — use the OS ghostty (/usr/sbin/ghostty), matching the KDE terminal setting
+  # config only — use the OS ghostty binary
   programs.ghostty = {
     enable = true;
     package = null;
