@@ -1,10 +1,23 @@
 {
   lib,
+  pkgs,
   vars,
   config,
   ...
 }:
 {
+  # only build the locales actually referenced across the config (see LC_* below
+  # and plasma-localerc); the default glibcLocales is the full ~220 MiB archive
+  i18n.glibcLocales = pkgs.glibcLocales.override {
+    allLocales = false;
+    locales = [
+      "en_IE.UTF-8/UTF-8"
+      "pl_PL.UTF-8/UTF-8"
+      "en_CA.UTF-8/UTF-8"
+      "en_GB.UTF-8/UTF-8"
+    ];
+  };
+
   home.sessionVariables = {
     LANG = "en_IE.UTF-8";
     LC_COLLATE = "pl_PL.UTF-8";

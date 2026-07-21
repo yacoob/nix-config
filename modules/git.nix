@@ -20,6 +20,7 @@
   programs = {
     git = {
       enable = true;
+      package = pkgs.gitMinimal;
 
       settings = {
         user = {
