@@ -81,7 +81,7 @@
     '';
   };
 
-  programs.neovim = {
+  programs.neovim = lib.mkIf (config.flavour.atLeast "base") {
     enable = true;
     viAlias = true;
     vimAlias = true;

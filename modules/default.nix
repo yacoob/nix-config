@@ -2,15 +2,15 @@
   imports = [
     ./assorted_tools.nix
     ./env.nix
-    ./fish.nix
     ./fishy-friends.nix
     ./flavour.nix
     ./git.nix
     ./jujutsu.nix
     ./neovim.nix
-    ./packages.nix
+    ./nix-tools.nix
     ./plasma.nix
     ./scripts.nix
+    ./shell.nix
     ./ssh.nix
     ./starship.nix
     ./systemd.nix
