@@ -4,9 +4,26 @@
   config,
   ...
 }:
+let
+  # minimal drops fish's compiled-in python3 path (used only by fish_config /
+  # fish_update_completions), saving ~200 MiB. fish 4.x resolves its data dir
+  # relative to the binary, so the baked-in fallback paths (python3 and fish's
+  # own store path) go unused at runtime — scrub both from the already-built
+  # fish in a post-process so nothing gets recompiled.
+  fishNoPython = pkgs.runCommandLocal "${pkgs.fish.name}-nopython"
+    { nativeBuildInputs = [ pkgs.removeReferencesTo ]; }
+    ''
+      cp -a ${pkgs.fish} $out
+      chmod -R u+w $out
+      for f in $(grep -rlF -e ${pkgs.python3} -e ${pkgs.fish} "$out"); do
+        remove-references-to -t ${pkgs.python3} -t ${pkgs.fish} "$f"
+      done
+    '';
+in
 {
   programs.fish = {
     enable = true;
+    package = lib.mkIf (!(config.flavour.atLeast "base")) fishNoPython;
     plugins = [
       {
         name = "fzf";
